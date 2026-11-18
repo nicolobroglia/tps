@@ -1,0 +1,12 @@
+<classe>
+    <studente>
+        <nome>Mario</nome>
+        <cognome>Rossi</cognome>
+        <eta>18</eta>
+    </studente>
+    <studente>
+        <nome>Luca</nome>
+        <cognome>Bianchi</cognome>
+        <eta>19</eta>
+    </studente>
+</classe>

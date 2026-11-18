@@ -1,0 +1,35 @@
+<h1>Anagrafica della Classe</h1>
+<p id="risultato"></p>
+
+<script>
+const xhr = new XMLHttpRequest();
+xhr.open("GET", "dati.xml", true);
+
+xhr.onload = function() {
+    if (xhr.status === 200) {
+        const xml = xhr.responseXML;
+        const studenti = xml.getElementsByTagName("studente");
+        
+        let tabella = "<table border='1'><tr><th>Nome</th><th>Cognome</th><th>Età</th></tr>";
+        
+        for (let i = 0; i < studenti.length; i++) {
+            tabella += "<tr>" +
+                "<td>" + studenti[i].getElementsByTagName("nome")[0].textContent + "</td>" +
+                "<td>" + studenti[i].getElementsByTagName("cognome")[0].textContent + "</td>" +
+                "<td>" + studenti[i].getElementsByTagName("eta")[0].textContent + "</td>" +
+            "</tr>";
+        }
+        
+        tabella += "</table>";
+        document.getElementById("risultato").innerHTML = tabella;
+    } else {
+        document.getElementById("risultato").textContent = "Errore nel caricamento.";
+    }
+};
+
+xhr.onerror = function() {
+    document.getElementById("risultato").textContent = "Errore nella richiesta.";
+};
+
+xhr.send();
+</script>
